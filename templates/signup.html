@@ -1,0 +1,108 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Signup Page</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container jumbotron">
+		<div class="row">
+			<div class="col-md-4">
+				
+			</div>
+			<div class="col-md-4">
+				<h1>Signup here!</h1>
+				<form method="post" enctype="multipart/form-data">
+					{% csrf_token %}
+					
+					<div class="form-group">
+						<input type="text" name="email" class="form-control" placeholder="email">
+					</div>
+					
+					<div class="form-group">
+						<input type="text" name="username" class="form-control" placeholder="username">
+					</div>
+					<div class="form-group">
+						<input type="text" name="password" class="form-control" placeholder="password">
+					</div>
+					<div class="form-group">
+						<input type="text" name="c_password" class="form-control" placeholder="confirm password">
+					</div>
+					
+					<div class="form-group">
+						<!-- CSS -->
+						<style>
+						#my_camera{
+ 						width: 320px;
+ 						height: 240px;
+ 						border: 1px solid black;
+						}
+						</style>
+
+						<div id="my_camera"></div>
+						<br>
+						<input type=button value="Turn On Camera" onClick="configure()">
+						<input type=button value="Take Snapshot" onClick="take_snapshot()">
+						<br>
+ 						<p>This Image will get saved in Database </p>
+						<div id="results"></div>
+ 				        <input type="hidden" name="userimage" value="" id="results2">
+						<!-- Webcam.min.js -->
+						<script type="text/javascript" src="{% static 'webcamjs/webcam.min.js' %}"></script>
+
+						<!-- Configure a few settings and attach camera -->
+						<script language="JavaScript">
+ 						
+ 						function configure(){
+						Webcam.set({
+						width: 320,
+						height: 240,
+						image_format: 'jpeg',
+						jpeg_quality: 90
+						});
+						Webcam.attach( '#my_camera' );
+						}
+
+						function take_snapshot() {
+ 
+ 						// take snapshot and get image data
+ 						Webcam.snap( function(data_uri) {
+  						// display results in page
+  						document.getElementById('results2').innerHTML = '<img id="imageprev" src="'+data_uri+'" name="lauser" />';
+  						
+  						document.getElementById('my_camera').style.width = "0px";
+  						document.getElementById('my_camera').style.height = "0px";
+  						document.getElementById('my_camera').style.border = "0px";
+
+  						var base64image =  document.getElementById("imageprev").src;
+  						document.getElementById('results2').value=base64image;
+  						Webcam.reset();
+  						} );
+						}
+						</script>
+
+					</div>   				
+					
+					
+					<div class="form-group">
+						<input type="submit" value="Signup" class="form-control btn btn-primary">
+					</div>
+
+					<a href="/user/login"></a><b>Already have an account ?</b></a>
+
+				</form>
+				<div class="form-group">
+						<a href="/user/login/">
+						<button class="form-control btn btn-primary"><b>Log in</b></button>
+						</a>
+					</div>
+			</div>
+			<div class="col-md-4">
+				
+			</div>
+			
+		</div>
+	</div>
+</body>
+</html>

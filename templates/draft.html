@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Draft</title>
+</head>
+<body>
+	{% for blog in db %}
+	<p>Title</p><p>{{ blog.dtitle }}</p><br>
+	<p>Content</p><p>{{ blog.dcontent }}</p><br>
+	<p>Image</p><p>{{ blog.image }}</p><br>
+	{% endfor %}
+
+</body>
+</html>

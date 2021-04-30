@@ -1,0 +1,20 @@
+{%  load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dashboard</title>
+</head>
+<body>
+	<h2>Login Valid</h2>
+	<p>{{ name }}</p>
+	<img src='{{ image }}'>
+	<br>
+
+
+	<a href="/blog/addblog"><button>Addblog</button></a>
+	<a href="/blog/draft"><button>Draft</button></a>
+	<a href="/blog/published"><button>Published</button></a>
+	<a href="/user/logout"><button>Logout</button></a>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Published</title>
+</head>
+<body>
+	{% for blog in pb %}
+	<p>Title</p><p>{{ blog.title }}</p><br>
+	<p>Content</p><p>{{ blog.content }}</p><br>
+	<p>Image</p><p>{{ blog.image }}</p><br>
+	<p>Date</p><p>{{ blog.date }}</p>
+	<hr>
+	{% endfor %}
+
+</body>
+</html>

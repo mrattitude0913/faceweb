@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add Blog</title>
+</head>
+<body>
+	<form method="POST">
+		{% csrf_token %}
+		<input type="text" name="title">
+		<input type="text" name="content">
+		<input type="text" name="image" value="abcd">
+		<input type="hidden" name="user" value="{{ id }}">
+		<input type="radio" name="dd" value="draft">DRAFT &nbsp;
+		<input type="radio" name="dd" value="publish">PUBLISH
+		<br>
+		<br>
+		<input type="submit" name="Submit">
+
+	</form>
+
+</body>
+</html>
